@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://jcqg31cma0bg"]
+
+[ext_resource type="Script" path="res://NPCs/npc_manager.gd" id="1_e7jtd"]
+[ext_resource type="Resource" uid="uid://djfjsv2da1spp" path="res://NPCs/Timmy.tres" id="2_bt3hh"]
+
+[node name="NPCManager" type="Node2D"]
+script = ExtResource("1_e7jtd")
+customer_arr = Array[Resource("res://NPCs/customer.gd")]([ExtResource("2_bt3hh")])

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://djfjsv2da1spp"]
+
+[ext_resource type="Script" path="res://NPCs/customer.gd" id="1_ktu74"]
+[ext_resource type="Texture2D" uid="uid://cgx3dvhg1rijy" path="res://Sprites/NPC.png" id="2_o3ibg"]
+
+[resource]
+script = ExtResource("1_ktu74")
+name = "Timmy"
+texture = ExtResource("2_o3ibg")
+wallet = 10

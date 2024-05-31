@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8mig6v27jy1e"]
+
+[ext_resource type="Script" path="res://Game/main.gd" id="1_3wfpr"]
+[ext_resource type="PackedScene" uid="uid://dmobjppe0au82" path="res://Game/action_manager.tscn" id="2_2dwvk"]
+[ext_resource type="PackedScene" uid="uid://bp0f7d383gpyy" path="res://Audio/audio_manager.tscn" id="2_qgc0n"]
+[ext_resource type="PackedScene" uid="uid://vdva3l6py1bc" path="res://Game/ui.tscn" id="3_s5qw3"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_3wfpr")
+
+[node name="ActionManager" parent="." instance=ExtResource("2_2dwvk")]
+
+[node name="ShopStand" parent="ActionManager/ShopInventory" index="0"]
+position = Vector2(197, 180)
+
+[node name="Player" parent="ActionManager" index="1"]
+position = Vector2(48, 47)
+
+[node name="UI" parent="." instance=ExtResource("3_s5qw3")]
+
+[node name="AudioManager" parent="." instance=ExtResource("2_qgc0n")]
+
+[editable path="ActionManager"]
+[editable path="ActionManager/ShopInventory"]
+[editable path="ActionManager/NPCManager"]

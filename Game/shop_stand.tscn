@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0od10l8b4og"]
+
+[ext_resource type="Script" path="res://Game/shop_stand.gd" id="1_0vaxl"]
+[ext_resource type="Texture2D" uid="uid://bw05vdh5ocxd3" path="res://Sprites/Stand.png" id="2_4k0m7"]
+
+[node name="ShopStand" type="Node2D"]
+script = ExtResource("1_0vaxl")
+
+[node name="ShopStandSpr" type="Sprite2D" parent="."]
+texture = ExtResource("2_4k0m7")
