@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dninmsshc4cw6"]
+
+[ext_resource type="Script" path="res://Game/map_manager.gd" id="1_vda4n"]
+
+[node name="MapManager" type="Node2D"]
+script = ExtResource("1_vda4n")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

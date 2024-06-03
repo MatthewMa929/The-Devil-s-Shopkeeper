@@ -6,8 +6,6 @@ extends Node2D
 @onready var player = $Player
 @onready var npc_manager = $NPCManager
 
-signal move_digit(input)
-
 func _ready():
 	pass
 

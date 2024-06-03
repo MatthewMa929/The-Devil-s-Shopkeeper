@@ -8,4 +8,4 @@ script = ExtResource("1_b6n3i")
 name = "Apple"
 texture = ExtResource("2_iij0y")
 type = Array[String](["Food"])
-cost = Array[int]([0, 0])
+cost = 10

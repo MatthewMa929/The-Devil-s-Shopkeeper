@@ -1,25 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8mig6v27jy1e"]
+[gd_scene load_steps=7 format=3 uid="uid://b8mig6v27jy1e"]
 
 [ext_resource type="Script" path="res://Game/main.gd" id="1_3wfpr"]
 [ext_resource type="PackedScene" uid="uid://dmobjppe0au82" path="res://Game/action_manager.tscn" id="2_2dwvk"]
+[ext_resource type="Texture2D" uid="uid://5cm01rqyggx" path="res://Sprites/Background.png" id="2_7vbtx"]
 [ext_resource type="PackedScene" uid="uid://bp0f7d383gpyy" path="res://Audio/audio_manager.tscn" id="2_qgc0n"]
 [ext_resource type="PackedScene" uid="uid://vdva3l6py1bc" path="res://Game/ui.tscn" id="3_s5qw3"]
+[ext_resource type="Texture2D" uid="uid://dqwv1mxe6vx8x" path="res://Sprites/Concept.png" id="5_pynk7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3wfpr")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_7vbtx")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(160, 90)
+texture = ExtResource("5_pynk7")
+
 [node name="ActionManager" parent="." instance=ExtResource("2_2dwvk")]
 
 [node name="ShopStand" parent="ActionManager/ShopInventory" index="0"]
-position = Vector2(197, 180)
+position = Vector2(41, 37)
 
-[node name="Player" parent="ActionManager" index="1"]
-position = Vector2(48, 47)
+[node name="ShopStand2" parent="ActionManager/ShopInventory" index="1"]
+position = Vector2(67, 37)
+
+[node name="ShopStand3" parent="ActionManager/ShopInventory" index="2"]
+position = Vector2(93, 37)
+
+[node name="ShopStand4" parent="ActionManager/ShopInventory" index="3"]
+position = Vector2(227, 76)
+
+[node name="ShopStand5" parent="ActionManager/ShopInventory" index="4"]
+position = Vector2(199, 76)
+
+[node name="ShopStand6" parent="ActionManager/ShopInventory" index="5"]
+position = Vector2(171, 76)
+
+[node name="InventorySlot" parent="ActionManager/ShopInventory" index="6"]
+z_index = 1
+position = Vector2(8, 156)
 
 [node name="UI" parent="." instance=ExtResource("3_s5qw3")]
+z_index = 2
+
+[node name="NegotiateScreen" parent="UI" index="0"]
+visible = false
 
 [node name="AudioManager" parent="." instance=ExtResource("2_qgc0n")]
 
 [editable path="ActionManager"]
 [editable path="ActionManager/ShopInventory"]
 [editable path="ActionManager/NPCManager"]
+[editable path="UI"]
