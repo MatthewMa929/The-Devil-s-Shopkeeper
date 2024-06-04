@@ -16,20 +16,21 @@ func _ready():
 		duplicate_button(i)
 
 func _process(delta):
-	if Input.is_action_just_pressed("MoveDigitLeft"):
-		inc_icon.position.x -= gap
-		dec_icon.position.x -= gap
-		digit_ptr += 1
-	if Input.is_action_just_pressed("MoveDigitRight"):
-		inc_icon.position.x += gap
-		dec_icon.position.x += gap
-		digit_ptr -= 1
-	if Input.is_action_just_pressed("MoveDigitUp"):
-		increase_digit(digit_ptr)
-	if Input.is_action_just_pressed("MoveDigitDown"):
-		decrease_digit(digit_ptr)
-	if Input.is_action_just_pressed("Continue"):
-		change_price("0000000")
+	if Global.state == "NEGOTITATE":
+		if Input.is_action_just_pressed("Left"):
+			inc_icon.position.x -= gap
+			dec_icon.position.x -= gap
+			digit_ptr += 1
+		if Input.is_action_just_pressed("Right"):
+			inc_icon.position.x += gap
+			dec_icon.position.x += gap
+			digit_ptr -= 1
+		if Input.is_action_just_pressed("Up"):
+			increase_digit(digit_ptr)
+		if Input.is_action_just_pressed("Down"):
+			decrease_digit(digit_ptr)
+		if Input.is_action_just_pressed("Continue"):
+			change_price("0000000")
 
 func duplicate_button(num):
 	var new_price_box = price_box.duplicate(true)

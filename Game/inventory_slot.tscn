@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pqpwulot5odo"]
+[gd_scene load_steps=5 format=3 uid="uid://pqpwulot5odo"]
 
 [ext_resource type="Script" path="res://Game/inventory_slot.gd" id="1_qniwf"]
 [ext_resource type="Texture2D" uid="uid://uxanoe8o0p6a" path="res://Sprites/Inv_Back.png" id="2_hqo3f"]
 [ext_resource type="Texture2D" uid="uid://d1td0rid1bdpl" path="res://Sprites/InventorySlot.png" id="2_ufmwd"]
+[ext_resource type="Texture2D" uid="uid://cp45buggaahkm" path="res://Sprites/SelectInvSlot.png" id="4_v0bt5"]
 
 [node name="InventorySlot" type="Node2D"]
 script = ExtResource("1_qniwf")
@@ -18,4 +19,9 @@ texture = ExtResource("2_ufmwd")
 centered = false
 
 [node name="ItemSpr" type="Sprite2D" parent="."]
+centered = false
+
+[node name="Selected" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_v0bt5")
 centered = false
