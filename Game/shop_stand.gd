@@ -8,3 +8,5 @@ extends Node2D
 
 func _process(delta):
 	item_spr.texture = item.texture
+	if Global.state == "INVENTORY":
+		pass

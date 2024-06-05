@@ -6,9 +6,8 @@ extends Node2D
 @onready var player = $Player
 @onready var npc_manager = $NPCManager
 
-func _ready():
-	pass
-
 func _process(delta):
 	pass
 
+func set_up():
+	shop_inv.create_stands()

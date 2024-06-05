@@ -8,13 +8,12 @@ extends Node2D
 @onready var shop_stand = $ShopStand
 @onready var inv_size_x = 4
 @onready var inv_size_y = 4
+@onready var amt_stands = 6
 @onready var inv_arr = []
+@onready var stand_arr = []
+@onready var stand_pos_arr = []
 
 var select_num = 0
-
-func _ready():
-	create_inventory()
-	change_selected(0)
 
 func _process(delta):
 	if Global.state == "INVENTORY":
@@ -39,7 +38,6 @@ func change_selected(num):
 	if num == -1 and (select_num-3)%4 == 0 and select_num != 0:
 		select_num += 1
 	inv_arr[select_num].is_selected = true
-	print(select_num)
 
 func place_item():
 	pass
@@ -54,3 +52,19 @@ func create_inventory():
 			new_slot.visible = true
 			add_child(new_slot)
 			inv_arr.append(new_slot)
+
+func create_stands():
+	for i in range(stand_pos_arr.size()):
+		var new_stand = shop_stand.duplicate()
+		new_stand.position = stand_pos_arr[i]
+		new_stand.visible = true
+		add_child(new_stand)
+		stand_arr.append(new_stand)
+		print(new_stand.position)
+	print(stand_pos_arr)
+
+func _on_map_manager_set_up_done(pos_arr):
+	stand_pos_arr = pos_arr
+	create_inventory()
+	change_selected(0)
+	create_stands()

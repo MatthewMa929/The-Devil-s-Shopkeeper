@@ -10,5 +10,7 @@ item = ExtResource("2_wutgr")
 
 [node name="ShopStandSpr" type="Sprite2D" parent="."]
 texture = ExtResource("2_4k0m7")
+centered = false
 
 [node name="ItemSpr" type="Sprite2D" parent="."]
+centered = false

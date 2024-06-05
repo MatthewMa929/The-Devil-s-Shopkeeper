@@ -12,16 +12,6 @@ items = Array[Resource("res://Items/Item.gd")]([ExtResource("2_jse4l"), ExtResou
 
 [node name="ShopStand" parent="." instance=ExtResource("3_1v2nc")]
 
-[node name="ShopStand2" parent="." instance=ExtResource("3_1v2nc")]
-
-[node name="ShopStand3" parent="." instance=ExtResource("3_1v2nc")]
-
-[node name="ShopStand4" parent="." instance=ExtResource("3_1v2nc")]
-
-[node name="ShopStand5" parent="." instance=ExtResource("3_1v2nc")]
-
-[node name="ShopStand6" parent="." instance=ExtResource("3_1v2nc")]
-
 [node name="InventorySlot" parent="." instance=ExtResource("4_03sax")]
 visible = false
 item = ExtResource("5_r41hb")
