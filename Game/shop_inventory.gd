@@ -29,19 +29,6 @@ func _process(delta):
 		if Input.is_action_just_pressed("Continue"):
 			place_item()
 
-func change_selected(num):
-	inv_arr[select_num].is_selected = false
-	if select_num + num >= 0 and select_num + num < inv_size_x * inv_size_y:
-		select_num += num
-	if num == 1 and select_num%4 == 0:
-		select_num -= 1
-	if num == -1 and (select_num-3)%4 == 0 and select_num != 0:
-		select_num += 1
-	inv_arr[select_num].is_selected = true
-
-func place_item():
-	pass
-
 func create_inventory():
 	for i in range(inv_size_x):
 		var new_x = inventory_slot.position.x + i*15
@@ -60,8 +47,24 @@ func create_stands():
 		new_stand.visible = true
 		add_child(new_stand)
 		stand_arr.append(new_stand)
-		print(new_stand.position)
-	print(stand_pos_arr)
+		#print(new_stand.position)
+	#print(stand_pos_arr)
+
+func change_selected(num):
+	inv_arr[select_num].is_selected = false
+	if select_num + num >= 0 and select_num + num < inv_size_x * inv_size_y:
+		select_num += num
+	if num == 1 and select_num%4 == 0:
+		select_num -= 1
+	if num == -1 and (select_num-3)%4 == 0 and select_num != 0:
+		select_num += 1
+	inv_arr[select_num].is_selected = true
+
+func place_item():
+	pass
+
+func close_inventory():
+	pass
 
 func _on_map_manager_set_up_done(pos_arr):
 	stand_pos_arr = pos_arr

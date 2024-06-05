@@ -9,9 +9,6 @@ extends Node2D
 
 signal set_up_done(pos_arr)
 
-func _ready():
-	pass
-
 func set_up_shop(): #Need to offset by 16 due to tilemap setup
 	for i in range(11):
 		for j in range(6):

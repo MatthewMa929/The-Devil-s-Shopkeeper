@@ -8,7 +8,7 @@ extends Node
 @onready var ui = $UI
 @onready var audio_manager = $AudioManager
 
-func _ready():
+func _ready(): #THE ONLY READY
 	map_manager.set_up_shop()
 	action_manager.set_up()
 	

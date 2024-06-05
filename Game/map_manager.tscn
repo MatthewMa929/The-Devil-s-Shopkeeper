@@ -24,6 +24,7 @@ sources/3 = SubResource("TileSetAtlasSource_ci3c0")
 script = ExtResource("1_vda4n")
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 position = Vector2(-16, 0)
 tile_set = SubResource("TileSet_jxkja")
 format = 2

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbe0ssyb41o3d"]
+[gd_scene load_steps=5 format=3 uid="uid://dbe0ssyb41o3d"]
 
 [ext_resource type="Script" path="res://Game/shop_inventory.gd" id="1_wqa1j"]
 [ext_resource type="Resource" uid="uid://bcipwcpke05fv" path="res://Items/Apple.tres" id="2_jse4l"]
 [ext_resource type="PackedScene" uid="uid://bn0od10l8b4og" path="res://Game/shop_stand.tscn" id="3_1v2nc"]
 [ext_resource type="PackedScene" uid="uid://pqpwulot5odo" path="res://Game/inventory_slot.tscn" id="4_03sax"]
-[ext_resource type="Resource" uid="uid://cf6iosya80g00" path="res://Items/Empty.tres" id="5_r41hb"]
 
 [node name="ShopInventory" type="Node2D"]
 script = ExtResource("1_wqa1j")
@@ -14,4 +13,4 @@ items = Array[Resource("res://Items/Item.gd")]([ExtResource("2_jse4l"), ExtResou
 
 [node name="InventorySlot" parent="." instance=ExtResource("4_03sax")]
 visible = false
-item = ExtResource("5_r41hb")
+item = ExtResource("2_jse4l")
