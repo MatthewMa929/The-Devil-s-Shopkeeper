@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 #Holds an item, player should be able to place item here
 

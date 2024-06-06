@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8mig6v27jy1e"]
+[gd_scene load_steps=8 format=3 uid="uid://b8mig6v27jy1e"]
 
 [ext_resource type="Script" path="res://Game/main.gd" id="1_3wfpr"]
 [ext_resource type="PackedScene" uid="uid://dmobjppe0au82" path="res://Game/action_manager.tscn" id="2_2dwvk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dninmsshc4cw6" path="res://Game/map_manager.tscn" id="2_lifqi"]
 [ext_resource type="PackedScene" uid="uid://bp0f7d383gpyy" path="res://Audio/audio_manager.tscn" id="2_qgc0n"]
 [ext_resource type="PackedScene" uid="uid://vdva3l6py1bc" path="res://Game/ui.tscn" id="3_s5qw3"]
+[ext_resource type="Resource" uid="uid://cf6iosya80g00" path="res://Items/Empty.tres" id="5_y8k8q"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3wfpr")
@@ -16,6 +17,14 @@ script = ExtResource("1_3wfpr")
 texture = ExtResource("2_7vbtx")
 centered = false
 
+[node name="BackgroundCollision" type="StaticBody2D" parent="Background"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/BackgroundCollision"]
+position = Vector2(16, 16)
+polygon = PackedVector2Array(-16, -16, 304, -16, 304, 16, 0, 16, 0, 86, 80, 86, 80, 104, 80, 122, 50, 122, 50, 106, 0, 106, 0, 144, 288, 144, 288, 16, 304, 16, 304, 163, -16, 164, -16, 106)
+
 [node name="ActionManager" parent="." instance=ExtResource("2_2dwvk")]
 
 [node name="ShopInventory" parent="ActionManager" index="0"]
@@ -23,16 +32,16 @@ y_sort_enabled = true
 
 [node name="ShopStand" parent="ActionManager/ShopInventory" index="0"]
 visible = false
-position = Vector2(30, 46)
+position = Vector2(-2, -2)
 
 [node name="InventorySlot" parent="ActionManager/ShopInventory" index="1"]
 visible = true
 z_index = 2
 position = Vector2(8, 156)
+item = ExtResource("5_y8k8q")
 
 [node name="Player" parent="ActionManager" index="1"]
-y_sort_enabled = true
-position = Vector2(188, 86)
+position = Vector2(144, 89)
 
 [node name="UI" parent="." instance=ExtResource("3_s5qw3")]
 z_index = 5
@@ -43,6 +52,7 @@ visible = false
 [node name="AudioManager" parent="." instance=ExtResource("2_qgc0n")]
 
 [connection signal="set_up_done" from="MapManager" to="ActionManager/ShopInventory" method="_on_map_manager_set_up_done"]
+[connection signal="place_item" from="ActionManager/Player" to="ActionManager/ShopInventory" method="_on_player_place_item"]
 
 [editable path="ActionManager"]
 [editable path="ActionManager/ShopInventory"]

@@ -15,3 +15,7 @@ func _process(delta):
 	if item.name != "Empty":
 		item_spr.texture = item.texture
 		item_spr.scale = Vector2(0.5, 0.5)
+	if Global.state == "INVENTORY":
+		visible = true
+	else:
+		visible = false

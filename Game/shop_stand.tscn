@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bw05vdh5ocxd3" path="res://Sprites/Stand.png" id="2_4k0m7"]
 [ext_resource type="Resource" uid="uid://cf6iosya80g00" path="res://Items/Empty.tres" id="2_w2tii"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnstj"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxpg0"]
+size = Vector2(28, 28)
 
-[node name="ShopStand" type="Node2D"]
+[node name="ShopStand" type="StaticBody2D"]
 script = ExtResource("1_0vaxl")
 item = ExtResource("2_w2tii")
 
@@ -18,8 +18,6 @@ centered = false
 [node name="ItemSpr" type="Sprite2D" parent="."]
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, 16)
-shape = SubResource("RectangleShape2D_wnstj")
+shape = SubResource("RectangleShape2D_xxpg0")

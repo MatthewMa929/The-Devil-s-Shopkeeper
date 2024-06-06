@@ -6,4 +6,4 @@
 script = ExtResource("1_0jnss")
 name = "Empty"
 type = Array[String](["NULL"])
-cost = 10
+cost = 0

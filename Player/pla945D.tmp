@@ -1,24 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfr36cs7pa306"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_l07ll"]
-[ext_resource type="Texture2D" uid="uid://c8i4at42bqr37" path="res://Sprites/AcornBoy.png" id="2_0exvc"]
+[ext_resource type="Texture2D" uid="uid://dbl5gk450dxs4" path="res://Sprites/Devil.png" id="2_t0pso"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxt6s"]
-radius = 8.0
-height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 0
-collision_mask = 3
 script = ExtResource("1_l07ll")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0exvc")
+texture = ExtResource("2_t0pso")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_bxt6s")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 30)
