@@ -11,10 +11,9 @@ func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = input_direction * speed
 
-func _physics_process(delta):
-	if Global.state == "MOVE":
-		get_input()
-		move_and_collide(delta * velocity)
-		if Input.is_action_just_pressed("Continue") and raycast.is_colliding():
-			var collided = raycast.get_collider()
-			emit_signal("place_item", collided)
+func inputs(delta):
+	get_input()
+	move_and_collide(delta * velocity)
+	if Input.is_action_just_pressed("Continue") and raycast.is_colliding():
+		var collided = raycast.get_collider()
+		emit_signal("place_item", collided)

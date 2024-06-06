@@ -37,7 +37,7 @@ position = Vector2(-2, -2)
 [node name="InventorySlot" parent="ActionManager/ShopInventory" index="1"]
 visible = true
 z_index = 2
-position = Vector2(8, 156)
+position = Vector2(8, 111)
 item = ExtResource("5_y8k8q")
 
 [node name="Player" parent="ActionManager" index="1"]

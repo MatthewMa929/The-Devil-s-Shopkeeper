@@ -6,8 +6,11 @@ extends Node2D
 @onready var player = $Player
 @onready var npc_manager = $NPCManager
 
-func _process(delta):
-	pass
+func _physics_process(delta):
+	if Global.state == "INVENTORY":
+		shop_inventory.inputs(delta)
+	if Global.state == "MOVE":
+		player.inputs(delta)
 
 func set_up():
 	shop_inventory.set_up()

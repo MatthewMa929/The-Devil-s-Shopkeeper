@@ -7,6 +7,9 @@ extends StaticBody2D
 @export var item:Item
 
 func _process(delta):
-	item_spr.texture = item.texture
 	if Global.state == "INVENTORY":
 		pass
+
+func change_item(new_item):
+	item = new_item
+	item_spr.texture = item.texture
