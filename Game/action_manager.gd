@@ -14,3 +14,4 @@ func _physics_process(delta):
 
 func set_up():
 	shop_inventory.set_up()
+	npc_manager.set_up()

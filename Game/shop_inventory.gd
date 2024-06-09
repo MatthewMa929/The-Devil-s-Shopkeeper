@@ -24,9 +24,9 @@ func inputs(delta):
 	if Input.is_action_just_pressed("Right"):
 		change_selected(1)
 	if Input.is_action_just_pressed("Up"):
-		change_selected(inv_size_y)
-	if Input.is_action_just_pressed("Down"):
 		change_selected(-inv_size_y)
+	if Input.is_action_just_pressed("Down"):
+		change_selected(inv_size_y)
 	if Input.is_action_just_pressed("Place") and selected_stand:
 		place_item(select_num)
 	if Input.is_action_just_pressed("Back"):
@@ -69,7 +69,7 @@ func change_selected(num):
 
 func place_item(inv_arr_ind):
 	if selected_stand.item.name != "Empty":
-		inv_arr[find_empty_slot()].change_item(selected_stand.item)
+		inv_arr[select_num].change_item(selected_stand.item)
 		selected_stand.change_item(Global.empty)
 	else:
 		var new_item = inv_arr[inv_arr_ind].item
@@ -85,7 +85,7 @@ func find_empty_slot():
 func close_inventory():
 	Global.state = "MOVE"
 
-func _on_map_manager_set_up_done(pos_arr):
+func _on_map_manager_set_up_done(pos_arr, floor_arr):
 	stand_pos_arr = pos_arr
 
 func set_up():

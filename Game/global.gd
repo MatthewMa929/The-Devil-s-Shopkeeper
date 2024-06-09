@@ -6,4 +6,6 @@ extends Node
 @onready var state = "MOVE"
 
 var empty = null
+var nullNPC = null
+var stand_arr = []
 

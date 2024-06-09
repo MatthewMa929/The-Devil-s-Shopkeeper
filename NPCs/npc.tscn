@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://783h33ivjy0s"]
+
+[ext_resource type="Script" path="res://NPCs/NPC.gd" id="1_lgih4"]
+[ext_resource type="Resource" uid="uid://dmrs5cvdq4rv4" path="res://NPCs/Customers/NullNPC.tres" id="2_rb4gj"]
+
+[node name="NPC" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_lgih4")
+npc_res = ExtResource("2_rb4gj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
