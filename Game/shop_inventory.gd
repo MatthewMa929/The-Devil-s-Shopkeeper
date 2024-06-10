@@ -53,6 +53,7 @@ func create_stands():
 		new_stand.visible = true
 		add_child(new_stand)
 		stand_arr.append(new_stand)
+	Global.stand_arr = stand_arr
 		#print(new_stand.position)
 	#print(stand_pos_arr)
 	#print(stand_arr)

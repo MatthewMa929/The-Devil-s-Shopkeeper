@@ -31,6 +31,8 @@ func set_up_shop(): #Need to offset by 16 due to tilemap setup
 				if is_floor(coords_up):
 					stand_floor_arr.append(coords_up*cell_size+offset_i)
 	emit_signal("set_up_done", stand_pos_arr, stand_floor_arr)
+	Global.stand_floor_arr = stand_floor_arr
+	Global.stand_pos_arr = stand_pos_arr
 
 func is_floor(coords_i):
 	if tilemap.get_cell_atlas_coords(0, coords_i) == Vector2i(0, 0):

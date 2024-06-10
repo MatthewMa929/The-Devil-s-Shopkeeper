@@ -24,5 +24,6 @@ func spawn_npc(npc_res):
 	add_child(new_npc)
 
 func _on_map_manager_set_up_done(pos_arr, floor_arr):
-	print(pos_arr)
-	print(floor_arr)
+	pass
+	#print(pos_arr)
+	#print(floor_arr)

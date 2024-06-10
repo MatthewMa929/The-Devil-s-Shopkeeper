@@ -8,4 +8,6 @@ extends Node
 var empty = null
 var nullNPC = null
 var stand_arr = []
+var stand_pos_arr = []
+var stand_floor_arr = []
 
