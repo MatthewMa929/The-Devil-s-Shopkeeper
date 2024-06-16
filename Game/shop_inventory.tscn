@@ -8,7 +8,7 @@
 
 [node name="ShopInventory" type="Node2D"]
 script = ExtResource("1_wqa1j")
-items = Array[Resource("res://Items/Item.gd")]([ExtResource("2_jse4l"), ExtResource("2_jse4l")])
+item_arr = Array[Resource("res://Items/Item.gd")]([null, null, null, null])
 
 [node name="ShopStand" parent="." instance=ExtResource("3_1v2nc")]
 

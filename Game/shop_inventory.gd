@@ -2,7 +2,7 @@ extends Node2D
 
 #Will duplicate shop stands to fill store, stored in array. Also holds the inventory of items in stock.
 
-@export var items:Array[Item] = []
+@export var item_arr:Array[Item] = []
 
 @onready var inventory_slot = $InventorySlot
 @onready var shop_stand = $ShopStand
@@ -14,6 +14,9 @@ extends Node2D
 @onready var visible_inv_arr = []
 @onready var stand_arr = []
 @onready var stand_pos_arr = []
+@onready var rng = RandomNumberGenerator.new()
+
+signal display_item(item)
 
 var selected_stand = null
 var select_num = 0
@@ -43,7 +46,8 @@ func create_inventory():
 			add_child(new_slot)
 			inv_arr.append(new_slot)
 			visible_inv_arr.append(new_slot.item.texture)
-	inv_arr[0].change_item(resource_preloader.get_resource("Apple"))
+	for k in range(item_arr.size()):
+		inv_arr[k].change_item(resource_preloader.get_resource("Apple"))
 	print("inv created")
 
 func create_stands():
@@ -86,15 +90,49 @@ func find_empty_slot():
 func close_inventory():
 	Global.state = "MOVE"
 
-func _on_map_manager_set_up_done(pos_arr, floor_arr):
-	stand_pos_arr = pos_arr
-
 func set_up():
 	create_inventory()
 	change_selected(0)
 	create_stands()
 	Global.empty = resource_preloader.get_resource("Empty")
 
+func get_stand_items():
+	var stand_item_arr = []
+	for i in range(stand_arr.size()):
+		if stand_arr[i].item.name != "Empty":
+			stand_item_arr.append(stand_arr[i].item)
+	return stand_item_arr
+
+func get_item_resouce_arr(str_arr):
+	var ret_arr = []
+	for res_str in str_arr:
+		if typeof(res_str) != TYPE_STRING:
+			ret_arr.append(res_str)
+		else:
+			ret_arr.append(resource_preloader.get_resource(res_str))
+	return ret_arr
+
+func cmp_item_arrs(arr1, arr2):
+	var same_lst = []
+	var diff_lst = []
+	for item1 in arr1:
+		if item1 in arr2:
+			same_lst.append(item1)
+		else:
+			diff_lst.append(item1)
+	return [same_lst, diff_lst]
+
+func _on_map_manager_set_up_done(pos_arr, floor_arr):
+	stand_pos_arr = pos_arr
+
 func _on_player_place_item(collided):
 	Global.state = "INVENTORY"
 	selected_stand = collided
+
+func _on_npc_request_items(customer):
+	customer.shopping_list = get_item_resouce_arr(resource_preloader.get_resource_list()) #NEEDS CHANGING
+	var same_lst = cmp_item_arrs(customer.shopping_list, get_item_resouce_arr(get_stand_items()))[0]
+	if same_lst.size() > 0:
+		var rand_ind = rng.randi_range(0, same_lst.size()-1)
+		emit_signal("display_item", same_lst[rand_ind])
+	

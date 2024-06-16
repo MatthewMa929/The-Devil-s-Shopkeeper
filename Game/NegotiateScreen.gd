@@ -5,6 +5,7 @@ extends Control
 @onready var price_box = $PriceBox
 @onready var price_digit = $PriceDigit
 @onready var price_percentage = $PricePercentage
+@onready var displayed_item = $DisplayedItem 
 @onready var price_box_arr = [price_box]
 @onready var price_digit_arr = [price_digit]
 @onready var digit_ptr = 0
@@ -16,7 +17,7 @@ func _ready():
 		duplicate_button(i)
 
 func _process(delta):
-	if Global.state == "NEGOTITATE":
+	if Global.state == "NEGOTIATE":
 		if Input.is_action_just_pressed("Left"):
 			inc_icon.position.x -= gap
 			dec_icon.position.x -= gap
@@ -45,7 +46,7 @@ func duplicate_button(num):
 	add_child(new_price_box)
 
 func change_digit_text(new_digit_text, ptr=digit_ptr):
-	price_digit_arr[ptr].text = "[color=black]" + str(new_digit_text)
+	price_digit_arr[ptr].text = "[center][color=black]" + str(new_digit_text)
 
 func increase_digit(curr_digit):
 	if curr_digit > Global.max_digits:
@@ -76,3 +77,9 @@ func change_price(value):
 	for i in range(Global.max_digits, -1, -1):
 		change_digit_text(value[i], op)
 		op += 1
+
+func display_item(item):
+	displayed_item.texture = item.texture
+
+func _on_shop_inventory_display_item(item):
+	display_item(item)

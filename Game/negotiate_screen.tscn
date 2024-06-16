@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmfssrpqnmwww"]
+[gd_scene load_steps=5 format=3 uid="uid://dmfssrpqnmwww"]
 
 [ext_resource type="Script" path="res://Game/NegotiateScreen.gd" id="1_trj1p"]
 [ext_resource type="Texture2D" uid="uid://d2o2eye0f5gb0" path="res://Sprites/NegotiateBox.png" id="2_mwpoe"]
 [ext_resource type="Texture2D" uid="uid://dlywpygqv6uq1" path="res://Sprites/Arrow.png" id="3_mcll3"]
+[ext_resource type="Texture2D" uid="uid://bbkqkwbakspjg" path="res://Sprites/ItemCircle.png" id="4_rjg3b"]
 
 [node name="NegotiateScreen" type="Control"]
 layout_mode = 3
@@ -13,28 +14,28 @@ script = ExtResource("1_trj1p")
 
 [node name="PriceBox" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(240, 139)
+position = Vector2(256, 139)
 texture = ExtResource("2_mwpoe")
 
 [node name="PriceDigit" type="RichTextLabel" parent="."]
 clip_contents = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
-offset_left = 236.0
-offset_top = 131.0
-offset_right = 268.0
-offset_bottom = 163.0
+offset_left = 241.0
+offset_top = 130.5
+offset_right = 273.0
+offset_bottom = 162.5
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "[color=black]0"
+text = "[center][color=black]0[/color][/center]"
 
 [node name="DecIcon" type="Sprite2D" parent="."]
-position = Vector2(240, 150)
+position = Vector2(256.5, 150)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_mcll3")
 
 [node name="IncIcon" type="Sprite2D" parent="."]
-position = Vector2(240, 128)
+position = Vector2(256.5, 128)
 rotation = -3.14159
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_mcll3")
@@ -43,3 +44,11 @@ texture = ExtResource("3_mcll3")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ItemCircle" type="Sprite2D" parent="."]
+position = Vector2(163, 44)
+texture = ExtResource("4_rjg3b")
+
+[node name="DisplayedItem" type="Sprite2D" parent="."]
+position = Vector2(163, 44)
+scale = Vector2(1.5, 1.5)

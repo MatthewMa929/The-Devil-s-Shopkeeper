@@ -7,7 +7,6 @@
 
 [node name="NPCManager" type="Node2D"]
 script = ExtResource("1_e7jtd")
-customer_arr = Array[Resource("res://NPCs/customer.gd")]([ExtResource("2_3rvr4")])
 
 [node name="NPC" parent="." instance=ExtResource("3_mgeth")]
 
