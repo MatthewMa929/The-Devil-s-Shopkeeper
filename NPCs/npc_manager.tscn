@@ -1,14 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://jcqg31cma0bg"]
+[gd_scene load_steps=4 format=3 uid="uid://jcqg31cma0bg"]
 
 [ext_resource type="Script" path="res://NPCs/npc_manager.gd" id="1_e7jtd"]
-[ext_resource type="Resource" uid="uid://djfjsv2da1spp" path="res://NPCs/Customers/Devil.tres" id="2_3rvr4"]
-[ext_resource type="PackedScene" uid="uid://783h33ivjy0s" path="res://NPCs/npc.tscn" id="3_mgeth"]
+[ext_resource type="Resource" uid="uid://cf6du3r3gc8j4" path="res://NPCs/Customers/Devil.tres" id="2_3rvr4"]
 [ext_resource type="Resource" uid="uid://dmrs5cvdq4rv4" path="res://NPCs/Customers/NullNPC.tres" id="4_v27uh"]
 
 [node name="NPCManager" type="Node2D"]
 script = ExtResource("1_e7jtd")
-
-[node name="NPC" parent="." instance=ExtResource("3_mgeth")]
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("Devil", "NullNPC"), [ExtResource("2_3rvr4"), ExtResource("4_v27uh")]]

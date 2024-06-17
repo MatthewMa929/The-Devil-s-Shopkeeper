@@ -47,7 +47,7 @@ func create_inventory():
 			inv_arr.append(new_slot)
 			visible_inv_arr.append(new_slot.item.texture)
 	for k in range(item_arr.size()):
-		inv_arr[k].change_item(resource_preloader.get_resource("Apple"))
+		inv_arr[k].change_item(resource_preloader.get_resource(item_arr[k].name))
 	print("inv created")
 
 func create_stands():

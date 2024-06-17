@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://djfjsv2da1spp"]
+[gd_resource type="Resource" script_class="Customer" load_steps=3 format=3 uid="uid://cf6du3r3gc8j4"]
 
 [ext_resource type="Script" path="res://NPCs/cust.gd" id="1_pyod5"]
 [ext_resource type="Texture2D" uid="uid://dbl5gk450dxs4" path="res://Sprites/Devil.png" id="2_02xw5"]
@@ -7,5 +7,5 @@
 script = ExtResource("1_pyod5")
 name = "Devil"
 texture = ExtResource("2_02xw5")
-wallet = 100
-shopping_list = Array[Resource("res://Items/Item.gd")]([])
+wallet = 10
+shopping_list = []

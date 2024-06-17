@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfr36cs7pa306"]
+[gd_scene load_steps=7 format=3 uid="uid://cfr36cs7pa306"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_l07ll"]
 [ext_resource type="Texture2D" uid="uid://c8i4at42bqr37" path="res://Sprites/AcornBoy.png" id="2_0exvc"]
@@ -6,6 +6,42 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxt6s"]
 radius = 8.0
 height = 16.0
+
+[sub_resource type="Animation" id="Animation_nqsr1"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ir847"]
+resource_name = "Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ffs6"]
+_data = {
+"Down": SubResource("Animation_nqsr1"),
+"Up": SubResource("Animation_ir847")
+}
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -22,3 +58,8 @@ shape = SubResource("CapsuleShape2D_bxt6s")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ffs6")
+}
