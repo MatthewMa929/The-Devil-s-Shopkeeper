@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8mig6v27jy1e"]
+[gd_scene load_steps=9 format=3 uid="uid://b8mig6v27jy1e"]
 
 [ext_resource type="Script" path="res://Game/main.gd" id="1_3wfpr"]
 [ext_resource type="PackedScene" uid="uid://dmobjppe0au82" path="res://Game/action_manager.tscn" id="2_2dwvk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bp0f7d383gpyy" path="res://Audio/audio_manager.tscn" id="2_qgc0n"]
 [ext_resource type="PackedScene" uid="uid://vdva3l6py1bc" path="res://Game/ui.tscn" id="3_s5qw3"]
 [ext_resource type="Resource" uid="uid://cf6iosya80g00" path="res://Items/Empty.tres" id="5_y8k8q"]
+[ext_resource type="Texture2D" uid="uid://dmnt7eqlibvhm" path="res://Sprites/NegotiateBanner.png" id="8_ckul0"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3wfpr")
@@ -26,7 +27,7 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/BackgroundCollision"]
 position = Vector2(16, 16)
-polygon = PackedVector2Array(-16, -16, 304, -16, 304, 16, 0, 16, 0, 86, 80, 86, 80, 104, 80, 122, 50, 122, 50, 106, 0, 106, 0, 144, 288, 144, 288, 16, 304, 16, 304, 163, -16, 164, -16, 106)
+polygon = PackedVector2Array(-16, -16, 304, -16, 304, 16, 0, 16, 0, 86, 80, 86, 80, 104, 80, 122, 50, 122, 50, 112, 1, 112, 0, 144, 288, 144, 288, 16, 304, 16, 304, 163, -16, 164, -16, 106)
 
 [node name="ActionManager" parent="." instance=ExtResource("2_2dwvk")]
 
@@ -34,7 +35,6 @@ polygon = PackedVector2Array(-16, -16, 304, -16, 304, 16, 0, 16, 0, 86, 80, 86, 
 y_sort_enabled = true
 
 [node name="ShopStand" parent="ActionManager/ShopInventory" index="0"]
-visible = false
 position = Vector2(-2, -2)
 
 [node name="InventorySlot" parent="ActionManager/ShopInventory" index="1"]
@@ -54,11 +54,15 @@ z_index = 5
 
 [node name="AudioManager" parent="." instance=ExtResource("2_qgc0n")]
 
+[node name="NegotiateBanner" type="Sprite2D" parent="."]
+position = Vector2(160, 139)
+texture = ExtResource("8_ckul0")
+
 [connection signal="set_up_done" from="MapManager" to="ActionManager/ShopInventory" method="_on_map_manager_set_up_done"]
 [connection signal="set_up_done" from="MapManager" to="ActionManager/NPCManager" method="_on_map_manager_set_up_done"]
 [connection signal="display_item" from="ActionManager/ShopInventory" to="UI/NegotiateScreen" method="_on_shop_inventory_display_item"]
 [connection signal="place_item" from="ActionManager/Player" to="ActionManager/ShopInventory" method="_on_player_place_item"]
-[connection signal="request_items" from="ActionManager/NPCManager/NPC" to="ActionManager/ShopInventory" method="_on_npc_request_items"]
+[connection signal="request_items" from="ActionManager/NPCManager" to="ActionManager/ShopInventory" method="_on_npc_manager_request_items"]
 
 [editable path="MapManager"]
 [editable path="ActionManager"]

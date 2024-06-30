@@ -9,9 +9,10 @@
 
 [node name="ShopInventory" type="Node2D"]
 script = ExtResource("1_wqa1j")
-item_arr = Array[Resource("res://Items/ItemScript/Item.gd")]([ExtResource("2_jse4l"), ExtResource("5_ujom3"), ExtResource("2_jse4l"), ExtResource("2_jse4l")])
+item_arr = Array[Resource("res://Items/ItemScript/Item.gd")]([ExtResource("2_jse4l"), ExtResource("5_ujom3"), ExtResource("4_dawd7"), ExtResource("2_jse4l")])
 
 [node name="ShopStand" parent="." instance=ExtResource("3_1v2nc")]
+visible = false
 
 [node name="InventorySlot" parent="." instance=ExtResource("4_03sax")]
 visible = false

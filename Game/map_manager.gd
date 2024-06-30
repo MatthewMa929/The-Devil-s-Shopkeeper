@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tilemap = $TileMap
+@onready var player = $"../ActionManager/Player"
 @onready var cell_size = 32
 @onready var offset = Vector2(-16, 0)
 @onready var offset_i = Vector2i(-16, 0)
@@ -8,6 +9,13 @@ extends Node2D
 @onready var stand_pos_arr = []
 
 signal set_up_done(pos_arr, floor_arr)
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("Continue") && Global.state == "BUY":
+		print(tilemap.get_cell_atlas_coords(0, Vector2i(player.position.x/cell_size, player.position.y/cell_size)))
+	if tilemap.get_cell_atlas_coords(0, Vector2i(player.position.x/cell_size, player.position.y/cell_size)) == Vector2i(1, 1) && Input.is_action_just_pressed("Continue") && Global.state == "BUY":
+		Global.state = "SELL"
+		print("SELL SPACE")
 
 func set_up_shop(): #Need to offset by 16 due to tilemap setup
 	for i in range(11):

@@ -11,6 +11,7 @@ extends Control
 @onready var digit_ptr = 0
 
 var gap = 32
+var sell_queue = []
 
 func _ready():
 	for i in range(Global.max_digits):
@@ -80,6 +81,10 @@ func change_price(value):
 
 func display_item(item):
 	displayed_item.texture = item.texture
+	#DISPLAY OFFERED PRICE
+
+func negotiation(item): #STATE ALRDY SET TO NEGOTIATE, BASE IS YOU OFFER PRICE, NEXT GUY OFFERS PRICE
+	display_item(item)
 
 func _on_shop_inventory_display_item(item):
-	display_item(item)
+	sell_queue.append(item)

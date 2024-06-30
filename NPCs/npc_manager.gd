@@ -12,6 +12,8 @@ var spawn_pos = Vector2(144, 32) #-32
 var walkable_arr = []
 var stand_pos_arr = []
 
+signal request_items(customer)
+
 func _process(delta):
 	if Global.state == "SELL":
 		fill_customer_arr() #CHANGE
@@ -30,6 +32,7 @@ func spawn_npc(npc_res):
 	customer_arr.append(new_npc)
 	print(new_npc)
 	add_child(new_npc)
+	emit_signal("request_items", new_npc.npc_res)
 
 func _on_map_manager_set_up_done(pos_arr, floor_arr):
 	pass

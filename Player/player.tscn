@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfr36cs7pa306"]
+[gd_scene load_steps=9 format=3 uid="uid://cfr36cs7pa306"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_l07ll"]
 [ext_resource type="Texture2D" uid="uid://c8i4at42bqr37" path="res://Sprites/AcornBoy.png" id="2_0exvc"]
@@ -16,10 +16,40 @@ tracks/0/path = NodePath("RayCast2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_l8vs8"]
+resource_name = "Left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_amay7"]
+resource_name = "Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RayCast2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.71239]
 }
 
 [sub_resource type="Animation" id="Animation_ir847"]
@@ -31,15 +61,17 @@ tracks/0/path = NodePath("RayCast2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.5708]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ffs6"]
 _data = {
 "Down": SubResource("Animation_nqsr1"),
+"Left": SubResource("Animation_l8vs8"),
+"Right": SubResource("Animation_amay7"),
 "Up": SubResource("Animation_ir847")
 }
 
@@ -57,9 +89,14 @@ position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_bxt6s")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 30)
+target_position = Vector2(0, 32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_6ffs6")
 }
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 0, 30)
+width = 2.0

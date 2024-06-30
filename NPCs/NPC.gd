@@ -14,13 +14,13 @@ enum {
 
 var state = ENTER
 
-signal request_items(customer)
+#signal request_items(customer)
 
 func _physics_process(delta):
 	sprite.texture = npc_res.texture
 	if state == ENTER:
 		assigned_stand = get_random_stand()
-		emit_signal("request_items", npc_res)
+		#emit_signal("request_items", npc_res)
 		state = STOP
 	if state == WANDER:
 		pass

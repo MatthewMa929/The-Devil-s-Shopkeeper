@@ -122,6 +122,16 @@ func cmp_item_arrs(arr1, arr2):
 			diff_lst.append(item1)
 	return [same_lst, diff_lst]
 
+func random_item_lst(): #Probability: Stand items, Cost to reputation
+	var lst = get_item_resouce_arr(resource_preloader.get_resource_list())
+	var new_item_lst = []
+	for i in range(4):
+		var type = "Food" #CHANGE
+		var rand = rng.randi_range(0, lst.size()-1)
+		new_item_lst.append(lst[rand])
+	print(new_item_lst, self)
+	return new_item_lst
+
 func _on_map_manager_set_up_done(pos_arr, floor_arr):
 	stand_pos_arr = pos_arr
 
@@ -129,10 +139,10 @@ func _on_player_place_item(collided):
 	Global.state = "INVENTORY"
 	selected_stand = collided
 
-func _on_npc_request_items(customer):
-	customer.shopping_list = get_item_resouce_arr(resource_preloader.get_resource_list()) #NEEDS CHANGING
+func _on_npc_manager_request_items(customer):
+	customer.shopping_list = random_item_lst() #NEEDS CHANGING
 	var same_lst = cmp_item_arrs(customer.shopping_list, get_item_resouce_arr(get_stand_items()))[0]
 	if same_lst.size() > 0:
 		var rand_ind = rng.randi_range(0, same_lst.size()-1)
 		emit_signal("display_item", same_lst[rand_ind])
-	
+		print(same_lst)
