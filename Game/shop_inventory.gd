@@ -19,6 +19,7 @@ extends Node2D
 signal display_item(item)
 
 var selected_stand = null
+var shopping_list = []
 var select_num = 0
 
 func inputs(delta):
@@ -132,6 +133,28 @@ func random_item_lst(): #Probability: Stand items, Cost to reputation
 	print(new_item_lst, self)
 	return new_item_lst
 
+func create_shopping_list(customer_arr): #For random stand items, each customer takes a chance at buying it, wallet first, rarity 2nd
+	var stand_items = get_stand_items()
+	var highlighted = []
+	for a in range(0, 3):
+		highlighted.append(stand_arr[a].item)
+	for i in range(customer_arr.size()):
+		if rng.randi_range(0, 2): #Determines if the customer is a buyer
+			for j in range(stand_items.size()): #For each item in stand, 
+				var prob = rng.randf_range(0, 1)
+				if prob < calc_item_buy_chance(stand_items[j], customer_arr[i], highlighted):
+					shopping_list.append(j)
+					print(stand_items[j])
+					continue
+
+func calc_item_buy_chance(item, customer, highlighted):
+	var start_chance = 0.7
+	var mult = customer_arr[i].npc_res.status*4
+	var wallet = rng.randi_range(1 + mult, 4 + mult)*150
+	if item.cost >= wallet*1.2:
+		return 0
+	return start_chance/item.rarity
+
 func _on_map_manager_set_up_done(pos_arr, floor_arr):
 	stand_pos_arr = pos_arr
 
@@ -139,10 +162,5 @@ func _on_player_place_item(collided):
 	Global.state = "INVENTORY"
 	selected_stand = collided
 
-func _on_npc_manager_request_items(customer):
-	customer.shopping_list = random_item_lst() #NEEDS CHANGING
-	var same_lst = cmp_item_arrs(customer.shopping_list, get_item_resouce_arr(get_stand_items()))[0]
-	if same_lst.size() > 0:
-		var rand_ind = rng.randi_range(0, same_lst.size()-1)
-		emit_signal("display_item", same_lst[rand_ind])
-		print(same_lst)
+func _on_npc_manager_request_items(customer_arr):
+	create_shopping_list(customer_arr)

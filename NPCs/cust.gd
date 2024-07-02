@@ -4,5 +4,5 @@ class_name Customer
 
 @export var name:String
 @export var texture:Texture
-@export var wallet:int
-@export var shopping_list:Array
+@export var preferred_items:Array[Item]
+@export_enum("Villager", "Middle", "Noble") var status:int

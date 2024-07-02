@@ -6,4 +6,3 @@
 script = ExtResource("1_spled")
 name = "NullNPC"
 wallet = 0
-shopping_list = []

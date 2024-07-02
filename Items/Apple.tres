@@ -8,4 +8,5 @@ script = ExtResource("1_cbvbg")
 name = "Apple"
 texture = ExtResource("2_iij0y")
 type = Array[String](["Food"])
+rarity = 1
 cost = 10

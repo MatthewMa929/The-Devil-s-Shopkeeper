@@ -12,6 +12,7 @@ var nullNPC = null
 var stand_arr = []
 var stand_pos_arr = []
 var stand_floor_arr = []
+var sold_dict = {}
 
 func _process(delta):
 	if Input.is_action_just_pressed("Change State"):

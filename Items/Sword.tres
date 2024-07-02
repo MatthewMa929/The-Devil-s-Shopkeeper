@@ -8,4 +8,5 @@ script = ExtResource("1_tyxhe")
 name = "Sword"
 texture = ExtResource("2_x0qnq")
 type = Array[String](["Weapon"])
+rarity = 2
 cost = 20
