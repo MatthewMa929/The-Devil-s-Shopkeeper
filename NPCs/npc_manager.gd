@@ -15,7 +15,7 @@ var stand_pos_arr = []
 signal request_items(customer_arr)
 
 func _process(delta):
-	if Global.state == "SELL" && customer_arr.size() < max_customer_amt:
+	if Input.is_action_pressed("Cheat") && customer_arr.size() < max_customer_amt: #Global.state == "SELL" &&
 		fill_customer_arr() #CHANGE
 
 func set_up():

@@ -20,6 +20,7 @@ signal display_item(item)
 
 var selected_stand = null
 var shopping_list = []
+var shopping_list_ptr = 0
 var select_num = 0
 
 func inputs(delta):
@@ -139,21 +140,30 @@ func create_shopping_list(customer_arr): #For random stand items, each customer 
 	for a in range(0, 3):
 		highlighted.append(stand_arr[a].item)
 	for i in range(customer_arr.size()):
-		if rng.randi_range(0, 2): #Determines if the customer is a buyer
-			for j in range(stand_items.size()): #For each item in stand, 
-				var prob = rng.randf_range(0, 1)
-				if prob < calc_item_buy_chance(stand_items[j], customer_arr[i], highlighted):
-					shopping_list.append(j)
-					print(stand_items[j])
-					continue
+		for j in range(stand_items.size()): #For each item in stand, 
+			var prob = rng.randf_range(0, 1)
+			if prob < calc_item_buy_chance(stand_items[j], customer_arr[i], highlighted):
+				shopping_list.append(j)
+				#print(stand_items[j])
+				continue
+	emit_signal("display_item", stand_arr[shopping_list[0]].item)
 
 func calc_item_buy_chance(item, customer, highlighted):
-	var start_chance = 0.7
-	var mult = customer_arr[i].npc_res.status*4
+	var start_chance = 1.0
+	var mult = customer.npc_res.status*4
 	var wallet = rng.randi_range(1 + mult, 4 + mult)*150
+	var prob = start_chance
 	if item.cost >= wallet*1.2:
 		return 0
-	return start_chance/item.rarity
+	for pref_item in customer.npc_res.preferred_items:
+		if item == pref_item:
+			prob += 0.2
+			continue
+	var div = item.rarity + 1
+	return prob/div
+
+func sort_by_rarity():
+	pass
 
 func _on_map_manager_set_up_done(pos_arr, floor_arr):
 	stand_pos_arr = pos_arr
@@ -164,3 +174,8 @@ func _on_player_place_item(collided):
 
 func _on_npc_manager_request_items(customer_arr):
 	create_shopping_list(customer_arr)
+
+func _on_negotiate_screen_item_sold(item):
+	shopping_list_ptr += 1
+	emit_signal("display_item", stand_arr[shopping_list[shopping_list_ptr]].item)
+	print("SOLD")

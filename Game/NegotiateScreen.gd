@@ -12,6 +12,10 @@ extends Control
 
 var gap = 32
 var sell_queue = []
+var negotiated_price = 0
+var focused_item = null
+
+signal item_sold(item)
 
 func _ready():
 	for i in range(Global.max_digits):
@@ -32,6 +36,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("Down"):
 			decrease_digit(digit_ptr)
 		if Input.is_action_just_pressed("Continue"):
+			negotiation(focused_item)
 			change_price("0000000")
 
 func duplicate_button(num):
@@ -48,6 +53,7 @@ func duplicate_button(num):
 
 func change_digit_text(new_digit_text, ptr=digit_ptr):
 	price_digit_arr[ptr].text = "[center][color=black]" + str(new_digit_text)
+	negotiated_price = calc_negotiated_price()
 
 func increase_digit(curr_digit):
 	if curr_digit > Global.max_digits:
@@ -79,12 +85,24 @@ func change_price(value):
 		change_digit_text(value[i], op)
 		op += 1
 
+func calc_negotiated_price():	
+	var op = 0
+	var price = 0
+	for i in range(0, price_digit_arr.size(), 1):
+		price += int(price_digit_arr[i].text)*(10**i)
+		op += 1
+	return price
+
 func display_item(item):
 	displayed_item.texture = item.texture
+	focused_item = item
 	#DISPLAY OFFERED PRICE
 
 func negotiation(item): #STATE ALRDY SET TO NEGOTIATE, BASE IS YOU OFFER PRICE, NEXT GUY OFFERS PRICE
 	display_item(item)
+	if Input.is_action_just_pressed("Continue") && item.cost < negotiated_price:
+		emit_signal("item_sold", item)
 
 func _on_shop_inventory_display_item(item):
 	sell_queue.append(item)
+	display_item(item)

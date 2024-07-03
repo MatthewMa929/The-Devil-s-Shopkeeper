@@ -63,6 +63,7 @@ texture = ExtResource("8_ckul0")
 [connection signal="display_item" from="ActionManager/ShopInventory" to="UI/NegotiateScreen" method="_on_shop_inventory_display_item"]
 [connection signal="place_item" from="ActionManager/Player" to="ActionManager/ShopInventory" method="_on_player_place_item"]
 [connection signal="request_items" from="ActionManager/NPCManager" to="ActionManager/ShopInventory" method="_on_npc_manager_request_items"]
+[connection signal="item_sold" from="UI/NegotiateScreen" to="ActionManager/ShopInventory" method="_on_negotiate_screen_item_sold"]
 
 [editable path="MapManager"]
 [editable path="ActionManager"]
