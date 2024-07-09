@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxwo7d3wfwbvr"
-path="res://.godot/imported/sword.png-1cbf2b4fd1efdbc747c0161ef69297ef.ctex"
+uid="uid://b4x8f8lfkd5lx"
+path="res://.godot/imported/UnderCard.png-7a9983eb02d7752ae28a9f8df987cdde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sword.png"
-dest_files=["res://.godot/imported/sword.png-1cbf2b4fd1efdbc747c0161ef69297ef.ctex"]
+source_file="res://Sprites/Minigame Sprites/UnderCard.png"
+dest_files=["res://.godot/imported/UnderCard.png-7a9983eb02d7752ae28a9f8df987cdde.ctex"]
 
 [params]
 

@@ -15,7 +15,7 @@ var sell_queue = []
 var negotiated_price = 0
 var focused_item = null
 
-signal item_sold(item)
+signal item_sold(item, cost)
 
 func _ready():
 	for i in range(Global.max_digits):
@@ -85,7 +85,7 @@ func change_price(value):
 		change_digit_text(value[i], op)
 		op += 1
 
-func calc_negotiated_price():	
+func calc_negotiated_price():
 	var op = 0
 	var price = 0
 	for i in range(0, price_digit_arr.size(), 1):
@@ -101,7 +101,7 @@ func display_item(item):
 func negotiation(item): #STATE ALRDY SET TO NEGOTIATE, BASE IS YOU OFFER PRICE, NEXT GUY OFFERS PRICE
 	display_item(item)
 	if Input.is_action_just_pressed("Continue") && item.cost < negotiated_price:
-		emit_signal("item_sold", item)
+		emit_signal("item_sold", item, negotiated_price)
 
 func _on_shop_inventory_display_item(item):
 	sell_queue.append(item)

@@ -1,7 +1,7 @@
 extends Node
 
 #States are MOVE, INVENTORY, BUY, SELL, NEGOTIATE
-@onready var state_arr = ["MOVE", "INVENTORY", "BUY", "SELL", "NEGOTIATE"]
+@onready var state_arr = ["MOVE", "INVENTORY", "BUY", "SELL", "NEGOTIATE", "SEARCH"]
 @onready var max_price = 100000
 @onready var max_digits = 6
 @onready var reputation = 20

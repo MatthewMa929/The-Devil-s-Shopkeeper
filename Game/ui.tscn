@@ -13,3 +13,15 @@ grow_vertical = 2
 script = ExtResource("1_a25hi")
 
 [node name="NegotiateScreen" parent="." instance=ExtResource("2_3nrgh")]
+
+[node name="Icons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CoinsText" type="RichTextLabel" parent="Icons"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 320.0
+offset_bottom = 40.0
+text = "2000"

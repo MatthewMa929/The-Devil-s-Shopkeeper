@@ -11,9 +11,17 @@ extends Node
 @onready var action_manager = $ActionManager
 @onready var ui = $UI
 @onready var audio_manager = $AudioManager
+@onready var background = $Background
+@onready var minigame = preload("res://Minigame/minigame.tscn").instantiate()
+@onready var current_scene = self
 
 func _ready(): #THE ONLY READY
 	map_manager.set_up_shop()
 	action_manager.set_up()
+	add_child(minigame)
+	remove_child(get_node("MapManager"))
+	remove_child(get_node("UI"))
+	remove_child(get_node("Background"))
+	remove_child(get_node("ActionManager"))
 	
 

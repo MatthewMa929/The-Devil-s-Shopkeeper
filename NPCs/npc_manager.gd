@@ -17,6 +17,7 @@ signal request_items(customer_arr)
 func _process(delta):
 	if Input.is_action_pressed("Cheat") && customer_arr.size() < max_customer_amt: #Global.state == "SELL" &&
 		fill_customer_arr() #CHANGE
+		Global.state = "NEGOTIATE"
 
 func set_up():
 	Global.nullNPC = resource_preloader.get_resource("NullNPC")

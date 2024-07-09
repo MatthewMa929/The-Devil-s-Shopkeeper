@@ -146,7 +146,10 @@ func create_shopping_list(customer_arr): #For random stand items, each customer 
 				shopping_list.append(j)
 				#print(stand_items[j])
 				continue
-	emit_signal("display_item", stand_arr[shopping_list[0]].item)
+	if shopping_list.size() > 0:
+		emit_signal("display_item", stand_arr[shopping_list[0]].item)
+	else:
+		Global.state = "MOVE"
 
 func calc_item_buy_chance(item, customer, highlighted):
 	var start_chance = 1.0
@@ -175,7 +178,10 @@ func _on_player_place_item(collided):
 func _on_npc_manager_request_items(customer_arr):
 	create_shopping_list(customer_arr)
 
-func _on_negotiate_screen_item_sold(item):
-	shopping_list_ptr += 1
-	emit_signal("display_item", stand_arr[shopping_list[shopping_list_ptr]].item)
+func _on_negotiate_screen_item_sold(item, cost):
 	print("SOLD")
+	if shopping_list.size() > shopping_list_ptr+1:
+		shopping_list_ptr += 1
+		emit_signal("display_item", stand_arr[shopping_list[shopping_list_ptr]].item)
+	else:
+		print("DONE")
