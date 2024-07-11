@@ -7,3 +7,4 @@ class_name Item
 @export var type:Array[String] = ["NULL"]
 @export_enum("NULL", "Common", "Rare", "Epic")  var rarity:int
 @export var cost:int = 10
+@export var pos:Vector2i

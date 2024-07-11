@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dv28biq5vtglc"]
+[gd_scene load_steps=8 format=3 uid="uid://dv28biq5vtglc"]
 
 [ext_resource type="Texture2D" uid="uid://bwnd781hcnqp0" path="res://Sprites/Minigame Sprites/Mtilemap.png" id="1_d5lgu"]
 [ext_resource type="Script" path="res://Minigame/Maps/mini_map.gd" id="2_2edkh"]
+[ext_resource type="Resource" uid="uid://bjuiyt1cfl2s" path="res://Minigame/Enemies/ScrapCrab.tres" id="3_k1mu6"]
+[ext_resource type="Resource" uid="uid://bcipwcpke05fv" path="res://Items/Apple.tres" id="3_y5anf"]
+[ext_resource type="Resource" uid="uid://0rilrnh37du8" path="res://Items/Sword.tres" id="4_2n2j0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q0hg"]
 texture = ExtResource("1_d5lgu")
@@ -21,5 +24,9 @@ layer_0/tile_data = PackedInt32Array(2, 65536, 0, 65538, 65536, 0, 131074, 65536
 script = ExtResource("2_2edkh")
 base_danger = 20
 max_enemies = 5
+item_min = 3
+item_max = 6
+enemies = Array[Resource("res://Minigame/Enemies/enemy.gd")]([ExtResource("3_k1mu6")])
+items = Array[Resource("res://Items/ItemScript/Item.gd")]([ExtResource("3_y5anf"), ExtResource("4_2n2j0")])
 size_x = 6
 size_y = 5
