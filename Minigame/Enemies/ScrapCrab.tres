@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bjuiyt1cfl2s"]
+
+[ext_resource type="Script" path="res://Minigame/Enemies/enemy.gd" id="1_txl2q"]
+[ext_resource type="Texture2D" uid="uid://dbl5gk450dxs4" path="res://Sprites/Devil.png" id="2_wal25"]
+
+[resource]
+script = ExtResource("1_txl2q")
+name = "Scrap Crab"
+texture = ExtResource("2_wal25")
+power = 4
