@@ -14,7 +14,10 @@ texture = ExtResource("2_ja0f8")
 centered = false
 
 [node name="ScrapMap" parent="." instance=ExtResource("3_70fbx")]
-max_enemies = 10
+item_min = 2
+item_max = 3
+size_x = 4
+size_y = 4
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 centered = false

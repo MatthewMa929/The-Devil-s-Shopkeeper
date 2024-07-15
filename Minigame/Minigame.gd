@@ -27,8 +27,8 @@ func _process(delta):
 	var mouse_vectori = create_vectori(get_global_mouse_position())
 	if Input.is_action_just_pressed("Left Click"):
 		if tilemap.get_cell_atlas_coords(0, mouse_vectori) == Vector2i(1, 0):
-			var adj_arr = check_adj(mouse_vectori)
-			reveal_arr.append([mouse_vectori, adj_arr[0], adj_arr[1]])
+			#var adj_arr = check_adj(mouse_vectori)
+			reveal_arr.append([mouse_vectori])#, adj_arr[0], adj_arr[1]])
 			tilemap.set_cell(0, mouse_vectori, 0, Vector2i(0, 0))
 			remove_placeholder(mouse_vectori)
 			reveal_object(mouse_vectori)
