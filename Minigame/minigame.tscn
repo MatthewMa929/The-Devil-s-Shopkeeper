@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://kbi65swgdc7l"]
+[gd_scene load_steps=6 format=3 uid="uid://kbi65swgdc7l"]
 
 [ext_resource type="Script" path="res://Minigame/Minigame.gd" id="1_ojpbm"]
 [ext_resource type="Texture2D" uid="uid://cjjbwbbk1itdy" path="res://Sprites/Minigame Sprites/Background.png" id="2_ja0f8"]
 [ext_resource type="PackedScene" uid="uid://dv28biq5vtglc" path="res://Minigame/Maps/scrap_map.tscn" id="3_70fbx"]
+[ext_resource type="PackedScene" uid="uid://d2spukb5aaeyw" path="res://Minigame/minigame_ui.tscn" id="4_c7fkf"]
+[ext_resource type="Texture2D" uid="uid://dbl5gk450dxs4" path="res://Sprites/Devil.png" id="4_sgqui"]
 
 [node name="Minigame" type="Node2D"]
 script = ExtResource("1_ojpbm")
@@ -12,6 +14,14 @@ texture = ExtResource("2_ja0f8")
 centered = false
 
 [node name="ScrapMap" parent="." instance=ExtResource("3_70fbx")]
+max_enemies = 10
 
 [node name="ObjectSprite" type="Sprite2D" parent="."]
 centered = false
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(-32, -32)
+texture = ExtResource("4_sgqui")
+centered = false
+
+[node name="MinigameUI" parent="." instance=ExtResource("4_c7fkf")]
